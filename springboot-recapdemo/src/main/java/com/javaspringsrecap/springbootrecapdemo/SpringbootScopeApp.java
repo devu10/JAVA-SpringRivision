@@ -1,39 +1,36 @@
 package com.javaspringsrecap.springbootrecapdemo;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
 import com.javaspringsrecap.springbootrecapdemo.basic.BinarySearch;
+import com.javaspringsrecap.springbootrecapdemo.scope.PersonDAO;
 
 @SpringBootApplication
 public class SpringbootScopeApp {
+	
+	private static Logger LOGGER = LoggerFactory.getLogger(SpringbootScopeApp.class);  
 
 	public static void main(String[] args) {
 		
-		//what are the beans : put @Components for the spring framework to identify the beans
-		//what are the dependencies of the beans? Put @Autowired for spring framework to identify the dependencies 
-		//where to search the beans? put @SpringBootApplicaiton for the spring framework to look for the beans and dependencies int he packages
 		
-		//below cant be done in more dynamic way
-		/*BinarySearch binarysearch = new BinarySearch(new BubbleAlgo());
-		int result = binarysearch.binarySearchAl(new int[] {12,4,6,3,1},1);
-		System.out.println(result);*/
-		
-		
-		//Applicaiton context
 		ApplicationContext applicationContext = SpringApplication.run(SpringbootScopeApp.class, args);
-		//get the binary seach from the applicaiton context
-		BinarySearch binarySearch = applicationContext.getBean(BinarySearch.class);
-		BinarySearch binarySearch1 = applicationContext.getBean(BinarySearch.class);
-		//by deafult the scope of bean is singleton, meaning if we try rquesting bean multiple time for same instantiated bean we get same
-		//but if we use the annocation @Scope with prototype then we get two deffernt beans.
-		System.out.println(binarySearch);
-		System.out.println(binarySearch1);
-		int result = binarySearch.binarySearchAl(new int[] {12,4,6,1,5},1);
-		System.out.println(result);
 		
+		PersonDAO  personDao = applicationContext.getBean(PersonDAO.class);
+		PersonDAO  personDao2 = applicationContext.getBean(PersonDAO.class);
 		
+		LOGGER.info("{}",personDao);
+		LOGGER.info("{}",personDao.getJdbcConnection());
+		
+		//if we require to get the new instace of the dependency of a bean then we should use proxy in the scpe annotation of the dependency  of the bean
+		//in this case the proxy should be used in the jdbcconnectin which is the dependency of the bean PersonDAO 
+		
+
+		LOGGER.info("{}",personDao2);
+		LOGGER.info("{}",personDao2.getJdbcConnection());
 	}
 
 }
