@@ -6,14 +6,36 @@ import org.springframework.stereotype.Component;
 @Component
 public class BinarySearch {
 	
+	
+	//if there are multiple beans like in our case bubbleAlgo and QuickSortalgo then we can 
+	//autowire in two ways 
+	//1. use the beans name directly as below: (here the two beans bubbleAlgo and quickSortalgo are created since we put @componente annotation in)
+	//BubbleAlgo and QuickSortalgo.
+	//another one is putting the @primary annotaion in the Bean below the component annotaion
 	@Autowired
 	private SortAlgo sortAlgo;
 	
 	
- public BinarySearch(SortAlgo sortAlgo) {
-		super();
-		this.sortAlgo = sortAlgo;
-	}
+//idea to use constructor injectio is when there mandatory dependecies like without SortAlogo the program wont run
+	//but here constructor is not necessary we can just add the dependencies and put Autowired on top
+// public BinarySearch(SortAlgo sortAlgo) {
+//		super();
+//		this.sortAlgo = sortAlgo;
+//	}
+	
+	
+	
+	
+//	public SortAlgo getSortAlgo() {
+//		return sortAlgo;
+//	}
+//
+//
+//
+//	public void setSortAlgo(SortAlgo sortAlgo) {
+//		this.sortAlgo = sortAlgo;
+//	}
+//	
 
 
 public int binarySearchAl(int[] numbers, int numberToSearch) {
@@ -35,4 +57,8 @@ public int binarySearchAl(int[] numbers, int numberToSearch) {
 	 
 	 return 1;
  }
+
+
+
+
 }
