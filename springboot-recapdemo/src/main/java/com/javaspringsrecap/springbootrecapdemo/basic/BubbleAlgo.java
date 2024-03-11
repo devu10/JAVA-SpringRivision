@@ -1,4 +1,4 @@
-package com.javaspringsrecap.springbootrecapdemo;
+package com.javaspringsrecap.springbootrecapdemo.basic;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;

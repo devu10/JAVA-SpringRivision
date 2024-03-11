@@ -1,4 +1,4 @@
-package com.javaspringsrecap.springbootrecapdemo;
+package com.javaspringsrecap.springbootrecapdemo.basic;
 
 public interface SortAlgo {
 

@@ -7,7 +7,7 @@ import org.springframework.context.ApplicationContext;
 import com.javaspringsrecap.springbootrecapdemo.basic.BinarySearch;
 
 @SpringBootApplication
-public class SpringbootRecapdemoApplication {
+public class SpringbootScopeApp {
 
 	public static void main(String[] args) {
 		
@@ -22,7 +22,7 @@ public class SpringbootRecapdemoApplication {
 		
 		
 		//Applicaiton context
-		ApplicationContext applicationContext = SpringApplication.run(SpringbootRecapdemoApplication.class, args);
+		ApplicationContext applicationContext = SpringApplication.run(SpringbootScopeApp.class, args);
 		//get the binary seach from the applicaiton context
 		BinarySearch binarySearch = applicationContext.getBean(BinarySearch.class);
 		BinarySearch binarySearch1 = applicationContext.getBean(BinarySearch.class);
