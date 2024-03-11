@@ -1,6 +1,7 @@
 package com.javaspringsrecap.springbootrecapdemo;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -11,8 +12,10 @@ public class BinarySearch {
 	//autowire in two ways 
 	//1. use the beans name directly as below: (here the two beans bubbleAlgo and quickSortalgo are created since we put @componente annotation in)
 	//BubbleAlgo and QuickSortalgo.
-	//another one is putting the @primary annotaion in the Bean below the component annotaion
+	//2.another one is putting the @primary annotaion in the Bean below the component annotaion
+	//3.using the @qualifier annotation 
 	@Autowired
+	@Qualifier("quick")
 	private SortAlgo sortAlgo;
 	
 	
